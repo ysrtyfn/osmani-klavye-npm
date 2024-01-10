@@ -1,0 +1,44 @@
+{
+    "name": "osmani-klavye",
+    "version": "1.0.0",
+    "description": "Osmanlı Türkçesi ile yazmak için hazırlanmış klavye programıdır.",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:cjs && npm run build:css && npm run build:cssAhir",
+        "build:esm": "tsc && tsc-alias",
+        "build:cjs": "tsc --module CommonJS --outDir dist/cjs && tsc-alias",
+        "build:css": "postcss src/takdim/tarz/tarzEvvel.css -o dist/esm/takdim/tarz/tarzAhir.css",
+        "build:cssAhir": "mkdir dist\\cjs\\takdim\\tarz && cp dist/esm/takdim/tarz/tarzAhir.css dist/cjs/takdim/tarz/tarzAhir.css"
+    },
+    "keywords": [
+        "osmani",
+        "klavye",
+        "ottoman",
+        "keyboard"
+    ],
+    "author": "ysrtyfn",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^20.10.8",
+        "@types/react": "^18.2.47",
+        "@types/react-dom": "^18.2.18",
+        "autoprefixer": "^10.4.16",
+        "postcss-cli": "^11.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5.3.3"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "dependencies": {
+        "clsx": "^2.1.0",
+        "tailwind-merge": "^2.2.0"
+    }
+}
